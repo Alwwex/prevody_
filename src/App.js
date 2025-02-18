@@ -1,10 +1,10 @@
-import logo from './UnitConverter.js';
+import UnitConverter from "./UnitConverter";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-        <UnitConverter />
+      <UnitConverter />
     </div>
   );
 }
