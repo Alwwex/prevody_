@@ -54,25 +54,36 @@ export default function UnitConverter() {
   const convertDistance = () => {
     if (inputValueDist === "" || isNaN(inputValueDist)) return;
     const conversionRate = distanceConversions[fromUnitDist]?.[toUnitDist] || 1;
-    setResultDist((inputValueDist * conversionRate).toLocaleString());
+    const result = inputValueDist * conversionRate;
+    setResultDist(result);
   };
 
   const convertWeight = () => {
     if (inputValueWeight === "" || isNaN(inputValueWeight)) return;
     const conversionRate = weightConversions[fromUnitWeight]?.[toUnitWeight] || 1;
-    setResultWeight((inputValueWeight * conversionRate).toLocaleString());
+    const result = inputValueWeight * conversionRate;
+    setResultWeight(result);
   };
 
   const convertEnergy = () => {
     if (inputValueEnergy === "" || isNaN(inputValueEnergy)) return;
     const conversionRate = energyConversions[fromUnitEnergy]?.[toUnitEnergy] || 1;
-    setResultEnergy((inputValueEnergy * conversionRate).toLocaleString());
+    const result = inputValueEnergy * conversionRate;
+    setResultEnergy(result);
   };
 
   const convertSpeed = () => {
     if (inputValueSpeed === "" || isNaN(inputValueSpeed)) return;
     const conversionRate = speedConversions[fromUnitSpeed]?.[toUnitSpeed] || 1;
-    setResultSpeed((inputValueSpeed * conversionRate).toLocaleString());
+    const result = inputValueSpeed * conversionRate;
+    setResultSpeed(result);
+  };
+
+  const formatResult = (value) => {
+    return {
+      formatted: value.toLocaleString(),
+      scientific: value.toExponential(2)  // Two decimals for scientific notation
+    };
   };
 
   return (
@@ -108,7 +119,10 @@ export default function UnitConverter() {
           </div>
           <Button onClick={convertDistance}>Převést</Button>
           {resultDist !== null && (
-            <div className="text-lg font-bold">Výsledek: {resultDist} {toUnitDist}</div>
+            <div className="text-lg font-bold">
+              Výsledek: {formatResult(resultDist).formatted} {toUnitDist} 
+              <div>{formatResult(resultDist).scientific}</div>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -144,7 +158,10 @@ export default function UnitConverter() {
           </div>
           <Button onClick={convertWeight}>Převést</Button>
           {resultWeight !== null && (
-            <div className="text-lg font-bold">Výsledek: {resultWeight} {toUnitWeight}</div>
+            <div className="text-lg font-bold">
+              Výsledek: {formatResult(resultWeight).formatted} {toUnitWeight}
+              <div>{formatResult(resultWeight).scientific}</div>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -180,7 +197,10 @@ export default function UnitConverter() {
           </div>
           <Button onClick={convertEnergy}>Převést</Button>
           {resultEnergy !== null && (
-            <div className="text-lg font-bold">Výsledek: {resultEnergy} {toUnitEnergy}</div>
+            <div className="text-lg font-bold">
+              Výsledek: {formatResult(resultEnergy).formatted} {toUnitEnergy}
+              <div>{formatResult(resultEnergy).scientific}</div>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -216,7 +236,10 @@ export default function UnitConverter() {
           </div>
           <Button onClick={convertSpeed}>Převést</Button>
           {resultSpeed !== null && (
-            <div className="text-lg font-bold">Výsledek: {resultSpeed} {toUnitSpeed}</div>
+            <div className="text-lg font-bold">
+              Výsledek: {formatResult(resultSpeed).formatted} {toUnitSpeed}
+              <div>{formatResult(resultSpeed).scientific}</div>
+            </div>
           )}
         </CardContent>
       </Card>
