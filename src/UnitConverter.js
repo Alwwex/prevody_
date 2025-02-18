@@ -54,25 +54,25 @@ export default function UnitConverter() {
   const convertDistance = () => {
     if (inputValueDist === "" || isNaN(inputValueDist)) return;
     const conversionRate = distanceConversions[fromUnitDist]?.[toUnitDist] || 1;
-    setResultDist(inputValueDist * conversionRate);
+    setResultDist((inputValueDist * conversionRate).toLocaleString());
   };
 
   const convertWeight = () => {
     if (inputValueWeight === "" || isNaN(inputValueWeight)) return;
     const conversionRate = weightConversions[fromUnitWeight]?.[toUnitWeight] || 1;
-    setResultWeight(inputValueWeight * conversionRate);
+    setResultWeight((inputValueWeight * conversionRate).toLocaleString());
   };
 
   const convertEnergy = () => {
     if (inputValueEnergy === "" || isNaN(inputValueEnergy)) return;
     const conversionRate = energyConversions[fromUnitEnergy]?.[toUnitEnergy] || 1;
-    setResultEnergy(inputValueEnergy * conversionRate);
+    setResultEnergy((inputValueEnergy * conversionRate).toLocaleString());
   };
 
   const convertSpeed = () => {
     if (inputValueSpeed === "" || isNaN(inputValueSpeed)) return;
     const conversionRate = speedConversions[fromUnitSpeed]?.[toUnitSpeed] || 1;
-    setResultSpeed(inputValueSpeed * conversionRate);
+    setResultSpeed((inputValueSpeed * conversionRate).toLocaleString());
   };
 
   return (
